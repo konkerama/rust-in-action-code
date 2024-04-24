@@ -25,8 +25,9 @@ impl File {
 
   fn read(
     self: &File,
-    save_to: &mut Vec<u8>,
+    // save_to: &mut Vec<u8>,
   ) -> usize {                        // <2>
+    let mut save_to: Vec<u8> = vec![];
     let mut tmp = self.data.clone();
     let read_length = tmp.len();
     save_to.reserve(read_length);
@@ -49,13 +50,13 @@ fn main() {
   ];
   let mut f3 = File::new_with_data("2.txt", &f3_data);
 
-  let mut buffer: Vec<u8> = vec![];
+  // let mut buffer: Vec<u8> = vec![];
 
   open(&mut f3);
-  let f3_length = f3.read(&mut buffer);   // <4>
+  let f3_length = f3.read();   // <4>
   close(&mut f3);
 
-  let text = String::from_utf8_lossy(&buffer);
+  let text = String::from_utf8_lossy(&f3.data);
 
   println!("{:?}", f3);
   println!("{} is {} bytes long", &f3.name, f3_length);

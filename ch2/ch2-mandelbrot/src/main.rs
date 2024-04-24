@@ -24,7 +24,6 @@ fn calculate_mandelbrot(      // <2>
       let escaped_at = mandelbrot_at_point(cx, cy, max_iters);
       row.push(escaped_at);
     }
-
     rows.push(row);
   }
   rows

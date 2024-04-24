@@ -61,8 +61,8 @@ impl Clock {
 
   #[cfg(not(windows))]
   fn set<Tz: TimeZone>(t: DateTime<Tz>) -> () {
-      use libc::{timeval, time_t, suseconds_t};
-  use libc::{settimeofday, timezone};
+    use libc::{timeval, time_t, suseconds_t};
+    use libc::{settimeofday, timezone};
 
     let t = t.with_timezone(&Local);
     let mut u: timeval = unsafe { zeroed() };
